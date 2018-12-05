@@ -50,8 +50,6 @@
         if (!isScriptLoaded) {
             var script = document.createElement('script');
             var prior = document.getElementById('outer-container');
-            console.log(script);
-            console.log(prior);
             script.async = 1;
 
             script.onload = script.onreadystatechange = function (_, isAbort) {
@@ -77,7 +75,7 @@
         }
     }
     function callback() {
-        console.log("done");
+        
     }
 </script>
 
