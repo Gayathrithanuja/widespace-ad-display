@@ -36,7 +36,7 @@
 
 <body>
     <div class="btn-div">
-        <button onclick="toggleScript('//engine.widespace.com/map/engine/dynamic#sid=448b624a-170f-44d4-9dc6-abfbd85e37b1', callback)"
+        <button onclick="toggleScript('//engine.widespace.com/map/engine/dynamic#sid=448b624a-170f-44d4-9dc6-abfbd85e37b1')"
             type="button" id="click-ad" class="custom-btn">
             Load ad
         </button>
@@ -46,20 +46,11 @@
 
 <script>
     var isScriptLoaded = false;
-    function toggleScript(source, callback) {
+    function toggleScript(source) {
         if (!isScriptLoaded) {
             var script = document.createElement('script');
             var prior = document.getElementById('outer-container');
             script.async = 1;
-
-            script.onload = script.onreadystatechange = function (_, isAbort) {
-                if (isAbort || !script.readyState || /loaded|complete/.test(script.readyState)) {
-                    script.onload = script.onreadystatechange = null;
-                    script = undefined;
-
-                    if (!isAbort) { if (callback) callback(); }
-                }
-            };
 
             script.src = '//engine.widespace.com/map/engine/dynamic#sid=448b624a-170f-44d4-9dc6-abfbd85e37b1';
             prior.appendChild(script);
@@ -73,9 +64,6 @@
             document.getElementById('click-ad').innerHTML = "Load ad";
             isScriptLoaded = false;
         }
-    }
-    function callback() {
-        
     }
 </script>
 
